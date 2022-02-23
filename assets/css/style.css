@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 * {
   padding: 0;
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -16,30 +20,52 @@ header {
   height: auto;
 }
   
+h1 {
+  font-size: 50px;
+  text-align: center;
+  padding: 5px;
+  font-family: 'Bebas Neue', cursive;
+  background: #ddd;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 100%;
+  background-color: #ddd;
+}
+
+.navbar li {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+
+.button {
+  font-size: 17px;
+  width: 100%;
+  cursor: pointer;
+  padding: 5px;
+  background-color: #2471A3;
+  color: #ddd;
+  border-radius: 5px;
+  transition: background-color .5s;
+}
+
+.button:hover {
+  background-color: #154360;
+}
+
+
+
 #map {
   height: 100%;
   width: 100%;
   background: #ddd;
 }
-
- 
-
-
-
-
-/* * {
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-}
-
-#map{
-  
-  height: 100%;
-  width: 100%;
-  
-  background: #ddd;
-} */

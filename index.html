@@ -12,12 +12,14 @@
 <body class="container">
   <header>
     <h1>My first map</h1>
-    <div id="buttons">
-      <button id="roadmap">Roadmap View</button>
-      <button id="satellite">Satellite View</button>
-      <button id="hybrid">Hybrid View</button>
-      <button id="terrain">Terrain View</button>
-    </div>
+    <nav>
+      <ul class="navbar">
+        <li><button class="button" id="roadmap">Roadmap View</button></li>
+        <li><button class="button" id="satellite">Satellite View</button></li>
+        <li><button class="button" id="hybrid">Hybrid View</button></li>
+        <li><button class="button" id="terrain">Terrain View</button></li>
+      </ul>
+    </nav>
   </header>
   <div id="map"></div>
 </body>
@@ -25,5 +27,4 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgtx5uwC_sWL2cZIUr-sjPyrro1klbnZE&callback=initMap">
   </script>
 <script type="text/javascript" src="./assets/js/script.js"></script>
-
 </html>
