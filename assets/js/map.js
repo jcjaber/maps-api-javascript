@@ -1,60 +1,51 @@
-//variables
+// Variables
 let map;
 
-// MapType
-
-class MyMap {
-  constructor(tileSize) {
-    this.tileSize = tileSize;
-    this.maxZoom = 18;
-    this.name = 'MyMap';
-    this.alt = 'O mapa não carregou'
-  }
-
-  getTile(coord, zoom, ownerDocument) {
-    let div = ownerDocument.createElement('div');
-    div.innerHTML = 'Hello Maps!';
-    div.style.width = this.tileSize.width+'px';
-    div.style.height = this.tileSize.width+'px';
-    div.style.fontSize = '10px';
-    div.style.backgroundColor = '#ddd';
-    div.style.borderStyle = 'solid';
-    div.style.borderWidth = '1px';
-    div.style.borderColor = '#333';
-    return div;
-  }
-}
-
-//buttons
+// Buttons
 viewButton('satellite');
 viewButton('roadmap');
 viewButton('hybrid');
 viewButton('terrain');
 
+function viewButton (viewNameString) {
+  let button = document.querySelector(`#${viewNameString}`);
+  button.addEventListener('click', function() {
+    map.setMapTypeId(`${viewNameString}`);
+  });
+}
 
-//functions
+// Main function
 
 function initMap() {
   let mapOptions = {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-    mapTypeId: 'MyMap',
-    mapTypeControlOptions: {
-      MapTypeIds: ['roadmap', 'MyMap']
-    }
+    center: { lat: 40.740, lng: -74.18 },
+    zoom: 13
   };
 
   map = new google.maps.Map(document.getElementById("map"),mapOptions);
 
-  map.mapTypes.set('MyMap', new MyMap(new google.maps.Size(256, 256)))
-}
+  const imageBounds = {
+    north: 40.773941,
+    south: 40.712216,
+    east: -74.12544,
+    west: -74.22655,
+  };
 
-function viewButton (viewNameString) {
-  let button = document.querySelector(`#${viewNameString}`);
-  button.addEventListener('click', function() {
-    map.setMapTypeId(`${viewNameString}`)
+  const historicalOverlay = new google.maps.GroundOverlay(
+    "https://storage.googleapis.com/geo-devrel-public-buckets/newark_nj_1922-661x516.jpeg",
+    imageBounds, {
+      map: map,
+      opacity: 1,
+      clickable: true
+    });
+
+  //historicalOverlay.setMap(map);
+  historicalOverlay.addListener('click', function (e) {
+    alert('Clicked');
   });
 }
+
+// Shows script map api key
 
 function showMap (mapKey) {
   const mapScript = document.getElementById('mapScript');
@@ -62,3 +53,4 @@ function showMap (mapKey) {
   mapScript.defer = true;
   mapScript.async = true;
 }
+

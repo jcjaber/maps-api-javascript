@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-const path = require('path')
-require('dotenv').config()
+const path = require('path');
+require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, 'assets')));
 
@@ -15,5 +15,5 @@ app.get('/key', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Now listening on port ${port}`)
+  console.log(`Now listening on port ${port}`);
 });
